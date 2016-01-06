@@ -1,16 +1,50 @@
 # Common Toolbox
 
-> The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 projects.
+The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 projects.
 
-<br>
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Installation](#installation)
+- [Handlers](#handlers)
+  - [PlatformHandler](#platformhandler)
+    - [Property Platform](#property-platform)
+    - [Platform.IsLinux](#platformislinux)
+    - [Platform.IsMac](#platformismac)
+    - [Platform.IsUnix](#platformisunix)
+    - [Platform.IsWindows](#platformiswindows)
+    - [Platform.IsXbox](#platformisxbox)
+- [Helpers](#helpers)
+  - [ExceptionHelper](#exceptionhelper)
+    - [GetAllMessages](#getallmessages)
+    - [GetAllStackTraces](#getallstacktraces)
+    - [GetAllToStrings](#getalltostrings)
+  - [ReflectionHelper](#reflectionhelper)
+    - [GetAttributeFrom](#getattributefrom)
+    - [GetClassesInheritingFrom](#getclassesinheritingfrom)
+    - [GetReferencingAssemblies](#getreferencingassemblies)
+    - [GetTypesFromAppDomain](#gettypesfromappdomain)
+    - [GetTypesThatStartWith](#gettypesthatstartwith)
+    - [GetTypesWithAttribute](#gettypeswithattribute)
+- [Validation](#validation)
+  - [ArgumentValidator](#argumentvalidator)
+    - [AssertNotEmpty](#assertnotempty)
+    - [AssertNotNull](#assertnotnull)
+    - [AssertNotNullOrEmpty](#assertnotnullorempty)
+    - [AssertNotNullOrWhiteSpace](#assertnotnullorwhitespace)
+- [Versies](#versies)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Installation
 The toolbox is added to a project via the NuGet Package Manager in Visual Studio or by adding the package directly to the project.json file :
 
 ``` json
  "dependencies": {
-    ...,
     "Toolbox.Common":  "1.1.0", 
-    ...
  }
 ```
 <br>
@@ -81,7 +115,7 @@ Returns the attribute if defined on the given type, null if the type does not ha
 Returns a list of classes that inherit from the given class.
 
 ``` csharp
-   var lijst = ReflectionHelper.GetClassesInheritingFrom(Assembly.GetCallingAssembly(), typeof(BaseClass));
+   var classes = ReflectionHelper.GetClassesInheritingFrom(Assembly.GetCallingAssembly(), typeof(BaseClass));
 ```
 
 #### GetReferencingAssemblies
@@ -95,21 +129,21 @@ Returns a list of assemblies that reference the given assembly.
 Returns a list of the given types in the AppDomain.
 
 ``` csharp
-   var lijst = ReflectionHelper.GetTypesFromAppDomain("MyClass");
+   var types = ReflectionHelper.GetTypesFromAppDomain("MyClass");
 ```
 
 #### GetTypesThatStartWith
 Returns a list of the types that start with the given string.
 
 ``` csharp
-   var lijst = ReflectionHelper.GetTypesThatStartWith("Http");
+   var types = ReflectionHelper.GetTypesThatStartWith("Http");
 ```
 
 #### GetTypesWithAttribute
 Returns a list of the types that are decorated with the given attribute.
 
 ``` csharp
-   var lijst = ReflectionHelper.GetTypesWithAttribute<AnAttribute>(Assembly.GetExecutingAssembly(), true);
+   var types = ReflectionHelper.GetTypesWithAttribute<AnAttribute>(Assembly.GetExecutingAssembly(), true);
 ```
 
 <br>
@@ -141,7 +175,7 @@ public void SetRoute(IApplicationBuilder builder, string route)
 {
    ArgumentValidator.AssertNotNull(builder, nameof(builder));
    ArgumentValidator.AssertNotNullOrWhiteSpace(route, nameof(route));
-   // Set de route, using the builder
+   // Set the route, using the builder
 }
 ```
 
@@ -157,7 +191,7 @@ The default message values can be restored with the _SetDefaults_ method :
 ``` csharp
   ArgumentValidator.Messages.SetDefaults();
 ```
-<br>
+
 The default messages are :
 
 | Property         | Message                   |
@@ -166,14 +200,14 @@ The default messages are :
 | EmptyString      | {0} is empty.             |
 | WhiteSpaceString | {0} contains only spaces. |
 
-<br>
-## Versies
 
-| Version | Author                                  | Description
-| ------- | ----------------------------------------| ----------------------------------------------------
-| 1.0.1   | Steven Vanden Broeck                    | Init.
-| 1.0.2   | Steven Vanden Broeck                    | ReflectionHelper.
-| 1.0.3   | Steven Vanden Broeck                    | PlatformHandler.
-| 1.0.4   | Steven Vanden Broeck                    | PlatformHandler extended.
-| 1.0.5   | Steven Vanden Broeck                    | ExceptionHelper.
-| 1.1.0   | Steven Vanden Broeck                    | Upgrade to ASP.NET 5 RC1.
+## Version History
+
+| Version | Date       | Author                                  | Description
+| ------- | ---------- | ----------------------------------------| ----------------------------------------------------
+| 1.0.1   | 2015-09-08 | Steven Vanden Broeck                    | Init.
+| 1.0.2   | 2015-09-09 | Steven Vanden Broeck                    | ReflectionHelper.
+| 1.0.3   | 2015-09-24 | Steven Vanden Broeck                    | PlatformHandler.
+| 1.0.4   | 2015-09-25 | Steven Vanden Broeck                    | PlatformHandler extended.
+| 1.0.5   | 2015-10-15 | Steven Vanden Broeck                    | ExceptionHelper.
+| 1.1.0   | 2015-12-28 | Steven Vanden Broeck                    | Upgrade to ASP.NET 5 RC1.
