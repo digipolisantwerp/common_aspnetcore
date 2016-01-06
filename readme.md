@@ -11,7 +11,7 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
 - [Installation](#installation)
 - [Handlers](#handlers)
   - [PlatformHandler](#platformhandler)
-    - [Property Platform](#property-platform)
+    - [PlatformHandler.Platform](#platformhandlerplatform)
     - [Platform.IsLinux](#platformislinux)
     - [Platform.IsMac](#platformismac)
     - [Platform.IsUnix](#platformisunix)
@@ -19,23 +19,23 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
     - [Platform.IsXbox](#platformisxbox)
 - [Helpers](#helpers)
   - [ExceptionHelper](#exceptionhelper)
-    - [GetAllMessages](#getallmessages)
-    - [GetAllStackTraces](#getallstacktraces)
-    - [GetAllToStrings](#getalltostrings)
+    - [ExceptionHelper.GetAllMessages()](#exceptionhelpergetallmessages)
+    - [ExceptionHelper.GetAllStackTraces()](#exceptionhelpergetallstacktraces)
+    - [ExceptionHelper.GetAllToStrings()](#exceptionhelpergetalltostrings)
   - [ReflectionHelper](#reflectionhelper)
-    - [GetAttributeFrom](#getattributefrom)
-    - [GetClassesInheritingFrom](#getclassesinheritingfrom)
-    - [GetReferencingAssemblies](#getreferencingassemblies)
-    - [GetTypesFromAppDomain](#gettypesfromappdomain)
-    - [GetTypesThatStartWith](#gettypesthatstartwith)
-    - [GetTypesWithAttribute](#gettypeswithattribute)
+    - [ReflectionHelper.GetAttributeFrom()](#reflectionhelpergetattributefrom)
+    - [ReflectionHelper.GetClassesInheritingFrom()](#reflectionhelpergetclassesinheritingfrom)
+    - [ReflectionHelper.GetReferencingAssemblies()](#reflectionhelpergetreferencingassemblies)
+    - [ReflectionHelper.GetTypesFromAppDomain()](#reflectionhelpergettypesfromappdomain)
+    - [ReflectionHelper.GetTypesThatStartWith()](#reflectionhelpergettypesthatstartwith)
+    - [ReflectionHelper.GetTypesWithAttribute()](#reflectionhelpergettypeswithattribute)
 - [Validation](#validation)
   - [ArgumentValidator](#argumentvalidator)
-    - [AssertNotEmpty](#assertnotempty)
-    - [AssertNotNull](#assertnotnull)
-    - [AssertNotNullOrEmpty](#assertnotnullorempty)
-    - [AssertNotNullOrWhiteSpace](#assertnotnullorwhitespace)
-- [Versies](#versies)
+    - [ArgumentValidator.AssertNotEmpty()](#argumentvalidatorassertnotempty)
+    - [ArgumentValidator.AssertNotNull()](#argumentvalidatorassertnotnull)
+    - [ArgumentValidator.AssertNotNullOrEmpty()](#argumentvalidatorassertnotnullorempty)
+    - [ArgumentValidator.AssertNotNullOrWhiteSpace()](#argumentvalidatorassertnotnullorwhitespace)
+- [Version History](#version-history)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -55,7 +55,7 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 The PlatformHandler wraps the PlatformID in a class and adds methods tho easily check which platform the source code is running on. It can be
 used in a loosely coupled project where the PlatformID can be mocked for testing purposes. 
 
-#### Property Platform
+#### PlatformHandler.Platform
 The methods and platformID are available through the Platform property. By default the Platform property is initialized to the OS of the machine.
 The Platform can be changed (e.g. for unit tests) through its setter.  
 
@@ -90,13 +90,13 @@ Returns true if the platform is XBox.
 The ExceptionHelper has methods to recursively extract properties of (inner-)exceptions. This can be handy when logging errors.
 
 <br>
-#### GetAllMessages
+#### ExceptionHelper.GetAllMessages()
 Returns a string with all messages of all (inner-)exceptions.
 
-#### GetAllStackTraces
+#### ExceptionHelper.GetAllStackTraces()
 Returns a string with all stacktrace of all (inner-)exceptions.
 
-#### GetAllToStrings
+#### ExceptionHelper.GetAllToStrings()
 Returns a string with the result of all ToString() calls of all (inner-)exceptions.
 
 <br>
@@ -104,42 +104,42 @@ Returns a string with the result of all ToString() calls of all (inner-)exceptio
 
 The ReflectionHelper provides methods that wrap common used reflection scenario's.
 
-#### GetAttributeFrom
+#### ReflectionHelper.GetAttributeFrom()
 Returns the attribute if defined on the given type, null if the type does not have the attribute.
 
 ``` csharp
    var attrib = ReflectionHelper.GetAttributeFrom<AnAttribute>(typeof(AClass));
 ```
 
-#### GetClassesInheritingFrom
+#### ReflectionHelper.GetClassesInheritingFrom()
 Returns a list of classes that inherit from the given class.
 
 ``` csharp
    var classes = ReflectionHelper.GetClassesInheritingFrom(Assembly.GetCallingAssembly(), typeof(BaseClass));
 ```
 
-#### GetReferencingAssemblies
+#### ReflectionHelper.GetReferencingAssemblies()
 Returns a list of assemblies that reference the given assembly.
 
 ``` csharp
    var assemblies = ReflectionHelper.GetReferencingAssemblies("Toolbox.Common.dll");
 ```
 
-#### GetTypesFromAppDomain
+#### ReflectionHelper.GetTypesFromAppDomain()
 Returns a list of the given types in the AppDomain.
 
 ``` csharp
    var types = ReflectionHelper.GetTypesFromAppDomain("MyClass");
 ```
 
-#### GetTypesThatStartWith
+#### ReflectionHelper.GetTypesThatStartWith()
 Returns a list of the types that start with the given string.
 
 ``` csharp
    var types = ReflectionHelper.GetTypesThatStartWith("Http");
 ```
 
-#### GetTypesWithAttribute
+#### ReflectionHelper.GetTypesWithAttribute()
 Returns a list of the types that are decorated with the given attribute.
 
 ``` csharp
@@ -154,20 +154,20 @@ Returns a list of the types that are decorated with the given attribute.
 The ArgumentValidator can be used to check arguments that are used as parameters in e.g. a method. It provides a way to enforce code contracts at 
 run time.
 
-#### AssertNotEmpty
+#### ArgumentValidator.AssertNotEmpty()
 Raises an ArgumentException if the given string is an empty string.
 
-#### AssertNotNull
+#### ArgumentValidator.AssertNotNull()
 Raises an ArgumentNullException if the given string or object is null.
 
-#### AssertNotNullOrEmpty
+#### ArgumentValidator.AssertNotNullOrEmpty()
 Raises an ArgumentNullException if the given string is null or an ArgumentException if the given string is an empty string.
 
-#### AssertNotNullOrWhiteSpace
+#### ArgumentValidator.AssertNotNullOrWhiteSpace()
 Raises an ArgumentNullException if the given string is null or an ArgumentException if the given string is an empty string or contains only white spaces.
 
 **Usage :**
-<br>
+
 (e.g. Code contract : builder must be an instantiated object and route must contain a value)
 
 ``` csharp
