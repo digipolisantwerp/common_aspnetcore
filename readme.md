@@ -44,16 +44,26 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 
 ``` json
  "dependencies": {
-    "Toolbox.Common":  "1.1.0", 
+    "Toolbox.Common":  "1.2.0",
  }
 ```
+
+<br>
+## Components
+
+### DisposableObject
+
+Inherit from this class if you have a class that must implement IDisposable. 
+In the inherited class you can implement the dispose logic by overriding the methods DisposeManagedResources and DisposeUnmanagedResources.
+
+
 <br>
 ## Handlers
 
 ### PlatformHandler
 
 The PlatformHandler wraps the PlatformID in a class and adds methods tho easily check which platform the source code is running on. It can be
-used in a loosely coupled project where the PlatformID can be mocked for testing purposes. 
+used in a loosely coupled project where the PlatformID can be mocked for testing purposes.
 
 #### PlatformHandler.Platform
 The methods and platformID are available through the Platform property. By default the Platform property is initialized to the OS of the machine.
@@ -147,11 +157,54 @@ Returns a list of the types that are decorated with the given attribute.
 ```
 
 <br>
+### StringHelper
+
+#### StringHelper.GetValidString(string input)
+Returns a string value that contains the contents of the given string or specifies whether the string is empty or null.
+
+#### StringHelper.GetValidString(object input)
+Returns the ToString() value of the given object or null if the object is null.
+
+#### StringHelper.RemoveWhitespaces(string input)
+
+The input string without whitespace characters, null if the input string is null.
+
+#### StringHelper.TrimOrDefault(string input)
+
+Returns null (= default) if the input value is null and the trimmed value if they are not null.
+
+#### StringHelper.ToCamelCase(string input)
+
+Returns the given string, starting with a lowercase letter.
+
+#### StringHelper.ToPascalCase(string input)
+
+ Returns the given string, beginning with an uppercase letter.
+
+#### StringHelper.FromBase64(string input)
+
+Returns a decoded string of the base64 input string.
+
+#### StringHelper.ToBase64(string input)
+
+Returns the given string in base64 format.
+
+ <br>
+### UriHelper
+
+#### UriHelper.IsValidUri(string url)
+ Returns true if the given string contains a valid url.
+
+#### UriHelper.GetPrimaryHostName()
+Returns the name of the primary host.
+
+ <br>
+
 ## Validation
 
 ### ArgumentValidator
 
-The ArgumentValidator can be used to check arguments that are used as parameters in e.g. a method. It provides a way to enforce code contracts at 
+The ArgumentValidator can be used to check arguments that are used as parameters in e.g. a method. It provides a way to enforce code contracts at
 run time.
 
 #### ArgumentValidator.AssertNotEmpty()

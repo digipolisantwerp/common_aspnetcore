@@ -7,7 +7,6 @@ namespace Toolbox.Common.Components
 {
 
     // Inherit from this class if you have a class that must implement IDisposable.
-    // In de inherited class kan je dan door de methods DisposeManagedResources en DisposeUnmanagedResources te overriden de dispose logica implementeren.
     // In the inherited class you can implement the dispose logic by overriding the methods DisposeManagedResources and DisposeUnmanagedResources.
     public class DisposableObject
     {
@@ -26,7 +25,7 @@ namespace Toolbox.Common.Components
         }
 
         /// <summary>
-        /// Releasest all resources that have been claimed by the object.
+        /// Releases all resources that have been claimed by the object.
         /// </summary>
         /// <remarks>
         /// Calls the Dispose method with argument True so it knows that the call came from code.
