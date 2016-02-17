@@ -49,6 +49,7 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
     - [ArgumentValidator.AssertNotNull()](#argumentvalidatorassertnotnull)
     - [ArgumentValidator.AssertNotNullOrEmpty()](#argumentvalidatorassertnotnullorempty)
     - [ArgumentValidator.AssertNotNullOrWhiteSpace()](#argumentvalidatorassertnotnullorwhitespace)
+  - [DateTimeCompareAttribute](#datetimecompareattribute)
 - [Version History](#version-history)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -58,7 +59,7 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 
 ``` json
  "dependencies": {
-    "Toolbox.Common":  "1.2.0",
+    "Toolbox.Common":  "1.2.1",
  }
 ```
 
@@ -67,7 +68,7 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 
 ### DisposableObject
 
-Inherit from this class if you have a class that must implement IDisposable. 
+Inherit from this class if you have a class that must implement IDisposable.
 In the inherited class you can implement the dispose logic by overriding the methods DisposeManagedResources and DisposeUnmanagedResources.
 
 
@@ -268,6 +269,11 @@ The default messages are :
 | WhiteSpaceString | {0} contains only spaces. |
 
 
+### DateTimeCompareAttribute
+
+
+
+
 ## Version History
 
 | Version | Date       | Author                                  | Description
@@ -278,3 +284,4 @@ The default messages are :
 | 1.0.4   | 2015-09-25 | Steven Vanden Broeck                    | PlatformHandler extended.
 | 1.0.5   | 2015-10-15 | Steven Vanden Broeck                    | ExceptionHelper.
 | 1.1.0   | 2015-12-28 | Steven Vanden Broeck                    | Upgrade to ASP.NET 5 RC1.
+| 1.2.1   | 2016-02-17 | Koen Stroobants                         | StringHelper, UriHelper, DisposableObject, DateTimeComparer.
