@@ -1,12 +1,13 @@
 ﻿{
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Common toolbox.",
   "authors": [ "digipolis.be" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-  "dependencies": {
-    
+  "dependencies": {   
+    "System.ComponentModel.Annotations": "4.0.11-beta-23516",
+    "Microsoft.DataAnnotations": "1.0.0-beta1"
   },
 	"frameworks": {
 		"dnx451": {
