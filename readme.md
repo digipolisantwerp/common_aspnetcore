@@ -59,7 +59,7 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 
 ``` json
  "dependencies": {
-    "Toolbox.Common":  "1.2.1",
+    "Digipolis.Common":  "2.0.0",
  }
 ```
 
@@ -147,7 +147,7 @@ Returns a list of classes that inherit from the given class.
 Returns a list of assemblies that reference the given assembly.
 
 ``` csharp
-   var assemblies = ReflectionHelper.GetReferencingAssemblies("Toolbox.Common.dll");
+   var assemblies = ReflectionHelper.GetReferencingAssemblies("Digipolis.Common.dll");
 ```
 
 #### ReflectionHelper.GetTypesFromAppDomain()
