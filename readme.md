@@ -9,6 +9,8 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
 
 
 - [Installation](#installation)
+- [Components](#components)
+  - [DisposableObject](#disposableobject)
 - [Handlers](#handlers)
   - [PlatformHandler](#platformhandler)
     - [PlatformHandler.Platform](#platformhandlerplatform)
@@ -29,12 +31,25 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
     - [ReflectionHelper.GetTypesFromAppDomain()](#reflectionhelpergettypesfromappdomain)
     - [ReflectionHelper.GetTypesThatStartWith()](#reflectionhelpergettypesthatstartwith)
     - [ReflectionHelper.GetTypesWithAttribute()](#reflectionhelpergettypeswithattribute)
+  - [StringHelper](#stringhelper)
+    - [StringHelper.GetValidString(string input)](#stringhelpergetvalidstringstring-input)
+    - [StringHelper.GetValidString(object input)](#stringhelpergetvalidstringobject-input)
+    - [StringHelper.RemoveWhitespaces(string input)](#stringhelperremovewhitespacesstring-input)
+    - [StringHelper.TrimOrDefault(string input)](#stringhelpertrimordefaultstring-input)
+    - [StringHelper.ToCamelCase(string input)](#stringhelpertocamelcasestring-input)
+    - [StringHelper.ToPascalCase(string input)](#stringhelpertopascalcasestring-input)
+    - [StringHelper.FromBase64(string input)](#stringhelperfrombase64string-input)
+    - [StringHelper.ToBase64(string input)](#stringhelpertobase64string-input)
+  - [UriHelper](#urihelper)
+    - [UriHelper.IsValidUri(string url)](#urihelperisvaliduristring-url)
+    - [UriHelper.GetPrimaryHostName()](#urihelpergetprimaryhostname)
 - [Validation](#validation)
   - [ArgumentValidator](#argumentvalidator)
     - [ArgumentValidator.AssertNotEmpty()](#argumentvalidatorassertnotempty)
     - [ArgumentValidator.AssertNotNull()](#argumentvalidatorassertnotnull)
     - [ArgumentValidator.AssertNotNullOrEmpty()](#argumentvalidatorassertnotnullorempty)
     - [ArgumentValidator.AssertNotNullOrWhiteSpace()](#argumentvalidatorassertnotnullorwhitespace)
+  - [DateTimeCompareAttribute](#datetimecompareattribute)
 - [Version History](#version-history)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -44,16 +59,26 @@ The toolbox is added to a project via the NuGet Package Manager in Visual Studio
 
 ``` json
  "dependencies": {
-    "Toolbox.Common":  "1.1.0", 
+    "Digipolis.Common":  "2.0.0",
  }
 ```
+
+<br>
+## Components
+
+### DisposableObject
+
+Inherit from this class if you have a class that must implement IDisposable.
+In the inherited class you can implement the dispose logic by overriding the methods DisposeManagedResources and DisposeUnmanagedResources.
+
+
 <br>
 ## Handlers
 
 ### PlatformHandler
 
 The PlatformHandler wraps the PlatformID in a class and adds methods tho easily check which platform the source code is running on. It can be
-used in a loosely coupled project where the PlatformID can be mocked for testing purposes. 
+used in a loosely coupled project where the PlatformID can be mocked for testing purposes.
 
 #### PlatformHandler.Platform
 The methods and platformID are available through the Platform property. By default the Platform property is initialized to the OS of the machine.
@@ -122,7 +147,7 @@ Returns a list of classes that inherit from the given class.
 Returns a list of assemblies that reference the given assembly.
 
 ``` csharp
-   var assemblies = ReflectionHelper.GetReferencingAssemblies("Toolbox.Common.dll");
+   var assemblies = ReflectionHelper.GetReferencingAssemblies("Digipolis.Common.dll");
 ```
 
 #### ReflectionHelper.GetTypesFromAppDomain()
@@ -147,11 +172,54 @@ Returns a list of the types that are decorated with the given attribute.
 ```
 
 <br>
+### StringHelper
+
+#### StringHelper.GetValidString(string input)
+Returns a string value that contains the contents of the given string or specifies whether the string is empty or null.
+
+#### StringHelper.GetValidString(object input)
+Returns the ToString() value of the given object or null if the object is null.
+
+#### StringHelper.RemoveWhitespaces(string input)
+
+The input string without whitespace characters, null if the input string is null.
+
+#### StringHelper.TrimOrDefault(string input)
+
+Returns null (= default) if the input value is null and the trimmed value if they are not null.
+
+#### StringHelper.ToCamelCase(string input)
+
+Returns the given string, starting with a lowercase letter.
+
+#### StringHelper.ToPascalCase(string input)
+
+ Returns the given string, beginning with an uppercase letter.
+
+#### StringHelper.FromBase64(string input)
+
+Returns a decoded string of the base64 input string.
+
+#### StringHelper.ToBase64(string input)
+
+Returns the given string in base64 format.
+
+ <br>
+### UriHelper
+
+#### UriHelper.IsValidUri(string url)
+ Returns true if the given string contains a valid url.
+
+#### UriHelper.GetPrimaryHostName()
+Returns the name of the primary host.
+
+ <br>
+
 ## Validation
 
 ### ArgumentValidator
 
-The ArgumentValidator can be used to check arguments that are used as parameters in e.g. a method. It provides a way to enforce code contracts at 
+The ArgumentValidator can be used to check arguments that are used as parameters in e.g. a method. It provides a way to enforce code contracts at
 run time.
 
 #### ArgumentValidator.AssertNotEmpty()
@@ -201,6 +269,11 @@ The default messages are :
 | WhiteSpaceString | {0} contains only spaces. |
 
 
+### DateTimeCompareAttribute
+
+
+
+
 ## Version History
 
 | Version | Date       | Author                                  | Description
@@ -211,3 +284,4 @@ The default messages are :
 | 1.0.4   | 2015-09-25 | Steven Vanden Broeck                    | PlatformHandler extended.
 | 1.0.5   | 2015-10-15 | Steven Vanden Broeck                    | ExceptionHelper.
 | 1.1.0   | 2015-12-28 | Steven Vanden Broeck                    | Upgrade to ASP.NET 5 RC1.
+| 1.2.1   | 2016-02-17 | Koen Stroobants                         | StringHelper, UriHelper, DisposableObject, DateTimeComparer.
