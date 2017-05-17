@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8DAFF29F-F882-4365-9628-CBBA3E2EDB98}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{707750AE-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDCB509C-6CF3-4E17-83EE-43E3AAC8F45F}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
+		CHANGELOG.md = CHANGELOG.md
 		gulpfile.js = gulpfile.js
 		LICENSE.txt = LICENSE.txt
 		NuGet.Config = NuGet.Config
@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Digipolis.Common", "src\Digipolis.Common\Digipolis.Common.xproj", "{D829DDDF-89C0-41C7-931A-44E26AFEBE10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digipolis.Common", "src\Digipolis.Common\Digipolis.Common.csproj", "{D829DDDF-89C0-41C7-931A-44E26AFEBE10}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Digipolis.Common.UnitTests", "test\Digipolis.Common.UnitTests\Digipolis.Common.UnitTests.xproj", "{4DCA17F6-05FB-4433-BEE2-9251AA268C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digipolis.Common.UnitTests", "test\Digipolis.Common.UnitTests\Digipolis.Common.UnitTests.csproj", "{4DCA17F6-05FB-4433-BEE2-9251AA268C7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
