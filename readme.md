@@ -71,7 +71,6 @@ or if your project still works with project.json :
  }
 ```
 
-<br>
 ## Components
 
 ### DisposableObject
@@ -80,7 +79,6 @@ Inherit from this class if you have a class that must implement IDisposable.
 In the inherited class you can implement the dispose logic by overriding the methods DisposeManagedResources and DisposeUnmanagedResources.
 
 
-<br>
 ## Handlers
 
 ### PlatformHandler
@@ -115,14 +113,14 @@ Returns true if the platform is Windows.
 
 Returns true if the platform is XBox.
 
-<br>
+
 ## Helpers
 
 ### ExceptionHelper
 
 The ExceptionHelper has methods to recursively extract properties of (inner-)exceptions. This can be handy when logging errors.
 
-<br>
+
 #### ExceptionHelper.GetAllMessages()
 Returns a string with all messages of all (inner-)exceptions.
 
@@ -132,7 +130,7 @@ Returns a string with all stacktrace of all (inner-)exceptions.
 #### ExceptionHelper.GetAllToStrings()
 Returns a string with the result of all ToString() calls of all (inner-)exceptions.
 
-<br>
+
 ### ReflectionHelper
 
 The ReflectionHelper provides methods that wrap common used reflection scenario's.
@@ -179,7 +177,7 @@ Returns a list of the types that are decorated with the given attribute.
    var types = ReflectionHelper.GetTypesWithAttribute<AnAttribute>(Assembly.GetExecutingAssembly(), true);
 ```
 
-<br>
+
 ### StringHelper
 
 #### StringHelper.GetValidString(string input)
@@ -212,7 +210,7 @@ Returns a decoded string of the base64 input string.
 
 Returns the given string in base64 format.
 
- <br>
+
 ### UriHelper
 
 #### UriHelper.IsValidUri(string url)
@@ -221,7 +219,7 @@ Returns the given string in base64 format.
 #### UriHelper.GetPrimaryHostName()
 Returns the name of the primary host.
 
- <br>
+
 
 ## Validation
 
