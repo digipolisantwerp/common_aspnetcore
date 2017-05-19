@@ -55,11 +55,19 @@ The Common Toolbox contains helper classes that can be useful in most ASP.NET 5 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
-The toolbox is added to a project via the NuGet Package Manager in Visual Studio or by adding the package directly to the project.json file :
+The toolbox is added to a project via the NuGet Package Manager in Visual Studio or by adding the package directly to the csproj project file:
+
+```xml
+  <ItemGroup>
+    <PackageReference Include="Digipolis.Common" Version="3.0.0" />
+  </ItemGroup>
+``` 
+
+or if your project still works with project.json :
 
 ``` json
  "dependencies": {
-    "Digipolis.Common":  "2.0.0",
+    "Digipolis.Common":  "3.0.0",
  }
 ```
 
